@@ -5,6 +5,7 @@ import config from './config.js';
 import connectDB from './database/db.js';
 import { errorHandler } from "./utils/errorHandler.js";
 import routes from './routes/index.js';
+import bodyParser from "body-parser";
 
 const { PORT } = config || 8080;
 
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(errorHandler);
